@@ -1,0 +1,40 @@
+module Cart
+{
+	struct ItemTars
+	{
+    	0 optional string id = "";
+    	1 optional string itemId = "";
+        2 optional int quantity = 0;
+        3 optional float unitPrice = 0;
+	}
+
+	struct CartTars
+	{
+	    0 optional string customerId = "";
+	    1 optional string id = "";
+	    2 optional vector<ItemTars> items = null;
+	}
+
+    interface CartsController
+    {
+    	CartTars get(string customerId)
+
+    	void delete(string customerId)
+
+    	void mergeCarts(string customerId,string sessionId)
+    }
+
+    interface ItemsController
+    {
+        ItemTars get(string customerId,string itemId)
+
+        vector<ItemTars> getItems(string customerId)
+
+        ItemTars addToCart(string customerId,ItemTars item)
+
+        void removeItem(string customerId,string itemId)
+
+        void updateItem(string customerId,ItemTars item)
+    }
+
+}

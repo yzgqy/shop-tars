@@ -1,0 +1,71 @@
+module Order
+{
+	struct CustomerOrderTars
+	{
+    	0 optional string id = "";
+    	1 optional string customerId = "";
+        2 optional CustomerTars customer = null;
+        3 optional AddressTars address = null;
+        4 optional CardTars card = null;
+        5 optional vector<ItemTars> items = null;
+        6 optional ShipmentTars shipment = null;
+        7 optional long date = 0;
+        8 optional float total = 0;
+	}
+
+    struct CustomerTars
+    {
+        0 optional string id = "";
+        1 optional string firstName = "";
+        2 optional string lastName = "";
+        3 optional string username = "";
+        4 optional vector<AddressTars> addresses= null;
+        5 optional vector<CardTars> cards= null;
+    }
+
+    struct AddressTars
+    {
+        0 optional string id = "";
+        1 optional string number = "";
+        2 optional string street = "";
+        3 optional string city = "";
+        4 optional string postcode = "";
+        5 optional string country = "";
+    }
+
+    struct CardTars
+    {
+        0 optional string id = "";
+        1 optional string longNum = "";
+        2 optional string expires = "";
+        3 optional string ccv = "";
+    }
+
+    struct ItemTars
+    {
+        0 optional string id = "";
+        1 optional string itemId = "";
+        2 optional int quantity = 0;
+        3 optional float unitPrice = 0;
+    }
+
+    struct ShipmentTars
+    {
+        0 optional string id = "";
+        1 optional string name = "";
+    }
+
+    struct NewOrderResourceTars
+    {
+        0 optional string customer = "";
+        1 optional string address = "";
+        2 optional string card = "";
+        3 optional string items = "";
+    }
+
+    interface OrdersController
+    {
+        CustomerOrderTars newOrder(NewOrderResourceTars item)
+    }
+
+}

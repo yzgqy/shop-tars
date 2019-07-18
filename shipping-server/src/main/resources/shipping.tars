@@ -1,0 +1,18 @@
+module Shipping
+{
+	struct ShipmentTars
+	{
+    	0 optional string id = "";
+    	1 optional string name = "";
+	}
+
+    interface ShippingController
+    {
+        string getShipping()
+
+        string getShippingById(string id)
+
+        ShipmentTars postShipping(ShipmentTars shipment)
+    }
+
+}
